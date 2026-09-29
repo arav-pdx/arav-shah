@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Your Name — Software and Hardware Engineer, Photographer</title>
-<meta name="description" content="Portfolio of Your Name: software projects, engineering projects, and photography.">
+<title>Arav Shah — Software Engineer, Photographer</title>
+<meta name="description" content="Portfolio of Arav Shah, a Georgia Tech computer science student building AI systems and backend software. Projects, experience, and photography.">
 <meta name="theme-color" content="#fcfffe">
 <style>
 :root{--bg:#fcfffe;--text:#000;--muted:#767676;--pad:clamp(20px,4vw,48px)}
@@ -58,6 +58,13 @@ h3{font-size:20px;font-weight:500}
 .cards .lk{display:flex;gap:20px;margin-top:8px;font-size:15px}
 .cards .lk a{color:var(--text)}
 
+/* Experience */
+.exp .row{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:24px;padding:28px 0;border-top:1px solid #dfe3e2}
+.exp .when{font-size:14px;color:var(--muted)}
+.exp .org{color:var(--muted)}
+.exp ul{padding-left:18px;margin-top:12px;max-width:64ch;color:var(--muted)}
+.exp li+li{margin-top:6px}
+
 /* Photography */
 .grid{columns:3 280px;column-gap:12px}
 .photo{width:100%;margin:0 0 12px;cursor:zoom-in;break-inside:avoid;transition:opacity .2s}
@@ -84,7 +91,7 @@ footer{padding:24px var(--pad) 40px;text-align:center;font-size:13px;color:var(-
 
 @media (max-width:760px){
   .top .mail{display:none}
-  .cards,.about,.skills{grid-template-columns:1fr}
+  .cards,.about,.skills,.exp .row{grid-template-columns:1fr}.exp .row{gap:8px}
   .cards .wide .ph{aspect-ratio:4/3}
   .block{padding-top:80px}
 }
@@ -94,8 +101,8 @@ footer{padding:24px var(--pad) 40px;text-align:center;font-size:13px;color:var(-
 <body>
 
 <header class="top">
-  <a class="mark" href="#top">Your Name</a>
-  <a class="mail" href="mailto:you@example.com">you@example.com</a>
+  <a class="mark" href="#top">Arav Shah</a>
+  <a class="mail" href="mailto:ashah740@gatech.edu">ashah740@gatech.edu</a>
   <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
 </header>
 
@@ -103,21 +110,23 @@ footer{padding:24px var(--pad) 40px;text-align:center;font-size:13px;color:var(-
   <ul>
     <li><a href="#top">Overview</a></li>
     <li><a href="#software">Software</a>
-      <ul><li><a href="#p1">Project One</a></li><li><a href="#p2">Project Two</a></li></ul></li>
+      <ul><li><a href="#p1">TensorQueue</a></li><li><a href="#p2">Player tracking</a></li><li><a href="#p4">Finance for You</a></li></ul></li>
     <li><a href="#engineering">Engineering</a>
-      <ul><li><a href="#p3">Project Three</a></li></ul></li>
+      <ul><li><a href="#p3">GPU cluster</a></li></ul></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#photography">Photography</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="https://github.com/yourname">GitHub</a></li>
-    <li><a href="https://linkedin.com/in/yourname">LinkedIn</a></li>
+    <li><a href="https://github.com/arav-pdx">GitHub</a></li>
+    <li><a href="https://linkedin.com/in/arav-shah">LinkedIn</a></li>
+    <li><a href="Arav_Shah_Resume.pdf">Résumé</a></li>
   </ul>
 </nav>
 
 <main>
 <section class="intro" id="top">
-  <h1>Your Name</h1>
-  <p>Software and hardware engineer. Photographer.</p>
+  <h1>Arav Shah</h1>
+  <p>Software engineer building AI systems. Georgia Tech, class of 2027.</p>
 </section>
 
 <section class="show" aria-label="Featured work">
@@ -137,18 +146,24 @@ footer{padding:24px var(--pad) 40px;text-align:center;font-size:13px;color:var(-
   <div class="cards">
     <!-- Images go in /images. Slideshow is built from every element with data-slide. -->
     <article id="p1">
-      <a class="ph" href="https://github.com/yourname/project-one" aria-label="Project One" data-slide="Project One" data-cat="Software" style="--img:url(images/project-one.jpg);--g1:#c9d6ff;--g2:#e6e6ec"></a>
-      <h3>Project One</h3>
-      <p>One sentence on what it does and who it is for, then one on the result, such as users, speed, or a problem solved.</p>
-      <p class="meta">React, TypeScript, Node.js</p>
-      <p class="lk"><a href="https://github.com/yourname/project-one">Code</a><a href="#">Live demo</a></p>
+      <a class="ph" href="https://github.com/arav-pdx/tensorqueue" aria-label="TensorQueue" data-slide="TensorQueue" data-cat="Software" style="--img:url(images/tensorqueue.jpg);--g1:#c9d6ff;--g2:#e6e6ec"></a>
+      <h3>TensorQueue</h3>
+      <p>An AI inference gateway and job queue. A FastAPI gateway hands work to a scalable Kubernetes worker fleet, with Redis retries, a dead-letter queue and crash recovery. It processes 1.5K+ image tasks a day at sub-100ms p99 latency.</p>
+      <p class="meta">Python, FastAPI, Redis, Kubernetes, PyTorch, YOLO</p>
+      <p class="lk"><a href="https://github.com/arav-pdx/tensorqueue">Code</a></p>
     </article>
     <article id="p2">
-      <a class="ph" href="https://github.com/yourname/project-two" aria-label="Project Two" data-slide="Project Two" data-cat="Software" style="--img:url(images/project-two.jpg);--g1:#ffe0c2;--g2:#f4c4b0"></a>
-      <h3>Project Two</h3>
-      <p>Name the problem and the decision you are proudest of. Recruiters skim, so keep it short.</p>
-      <p class="meta">Python, PostgreSQL, Docker</p>
-      <p class="lk"><a href="https://github.com/yourname/project-two">Code</a><a href="#">Write-up</a></p>
+      <a class="ph" href="#p2" aria-label="Player tracking research" data-slide="Player tracking" data-cat="Research" style="--img:url(images/player-tracking.jpg);--g1:#ffe0c2;--g2:#f4c4b0"></a>
+      <h3>Player tracking</h3>
+      <p>Computer vision models that detect and track players in game footage to measure positioning and movement. I led the research at Georgia Tech's AI and Sports Performance Lab, and better data raised precision, F1 and mAP by 26%.</p>
+      <p class="meta">Python, PyTorch, YOLO, computer vision</p>
+    </article>
+    <article class="wide" id="p4">
+      <a class="ph" href="https://github.com/arav-pdx/financial-planner" aria-label="Finance for You" data-slide="Finance for You" data-cat="Software" style="--img:url(images/finance-for-you.jpg);--g1:#e8e2f2;--g2:#b5aacd"></a>
+      <h3>Finance for You</h3>
+      <p>A full-stack financial planning web app built with Django. It links to bank accounts through Plaid and pulls market data from Alpha Vantage, then uses Pandas and NumPy to process the data and Matplotlib to chart it. Django's ORM manages storage in SQLite.</p>
+      <p class="meta">Django, Python, JavaScript, SQLite, Plaid, Alpha Vantage, Pandas, NumPy, Matplotlib</p>
+      <p class="lk"><a href="https://github.com/arav-pdx/financial-planner">Code</a></p>
     </article>
   </div>
 </section>
@@ -157,12 +172,30 @@ footer{padding:24px var(--pad) 40px;text-align:center;font-size:13px;color:var(-
   <h2>Engineering</h2>
   <div class="cards">
     <article class="wide" id="p3">
-      <a class="ph" href="#" aria-label="Project Three" data-slide="Project Three" data-cat="Engineering" style="--img:url(images/project-three.jpg);--g1:#cfe8dc;--g2:#9fb8ad"></a>
-      <h3>Project Three</h3>
-      <p>Show the physical side: what you designed, built, and tested, and how software made it work. Include a measurable result.</p>
-      <p class="meta">CAD, embedded C, PCB design, sensors</p>
-      <p class="lk"><a href="#">Details</a><a href="https://github.com/yourname/project-three">Firmware</a></p>
+      <a class="ph" href="#p3" aria-label="AI@GT GPU cluster" data-slide="GPU cluster" data-cat="Engineering" style="--img:url(images/gpu-cluster.jpg);--g1:#cfe8dc;--g2:#9fb8ad"></a>
+      <h3>GPU cluster</h3>
+      <p>A 5-node, 40GB VRAM cluster I built as Infrastructure Lead of AI@GT, giving student researchers shared compute for training and inference. Python and Bash scripts assign GPUs and monitor node status.</p>
+      <p class="meta">Python, Bash, GPU infrastructure</p>
     </article>
+  </div>
+</section>
+
+<section class="block exp" id="experience">
+  <h2>Experience</h2>
+  <div>
+    <div class="row"><p class="when">Jun – Aug 2026</p><div><h3>Software Engineering Intern</h3><p class="org">Société Générale</p>
+      <ul><li>Extended a Java/Python API and an Angular/TypeScript trading blotter with a new order class, supporting 100+ traders daily.</li>
+      <li>Delivered end to end across Java and TypeScript services, REST APIs, MongoDB and PostgreSQL for a pricing platform handling millions of dollars in daily orders.</li>
+      <li>Reached 100% test coverage and caught 10+ bugs before deployment.</li></ul></div></div>
+    <div class="row"><p class="when">May – Aug 2025</p><div><h3>Software Engineering Intern</h3><p class="org">Datamaton Inc.</p>
+      <ul><li>Built a JSON REST API and DTO layer to decouple a C# backend from the UI, deployed with Docker, Kubernetes and NGINX.</li>
+      <li>Refactored a 70K LOC Windows-only C++/CLI library into cross-platform .NET, removing 10+ OS-dependent components.</li>
+      <li>Benchmarked YOLO and Darknet models on 5,000+ labeled images to choose a face localization model.</li></ul></div></div>
+    <div class="row"><p class="when">Jan 2025 – May 2026</p><div><h3>Lead Researcher</h3><p class="org">Georgia Tech AI &amp; Sports Performance Lab</p>
+      <ul><li>Built a PyTorch pipeline to preprocess 1,200+ frames, train YOLO models and compare experiments by precision, recall, mAP and latency.</li></ul></div></div>
+    <div class="row"><p class="when">Jan 2024 – Present</p><div><h3>Infrastructure Lead &amp; VP of Marketing</h3><p class="org">AI@GT</p>
+      <ul><li>Built the GPU cluster and automated GPU assignment and monitoring.</li>
+      <li>Led marketing and sponsor outreach to grow on-campus AI education and student engagement.</li></ul></div></div>
   </div>
 </section>
 
@@ -181,30 +214,30 @@ footer{padding:24px var(--pad) 40px;text-align:center;font-size:13px;color:var(-
 
 <section class="block" id="about">
   <div class="about">
-    <div class="ph" role="img" aria-label="Portrait of Your Name" style="--img:url(images/portrait.jpg)"></div>
+    <div class="ph" role="img" aria-label="Portrait of Arav Shah" style="--img:url(images/portrait.jpg)"></div>
     <div>
-      <p class="said">I build across software and the physical world, from web apps to circuits and enclosures. I would rather show the work than describe it.</p>
+      <p class="said">I build software and the infrastructure it runs on, from trading platforms to GPU clusters to computer vision.</p>
       <div class="skills">
-        <div><h3>Software</h3><p>TypeScript, Python, SQL, React, Docker</p></div>
-        <div><h3>Engineering</h3><p>CAD, embedded C, PCB design, prototyping</p></div>
-        <div><h3>Photography</h3><p>Lightroom, 35mm film, travel and street</p></div>
+        <div><h3>Languages</h3><p>C++, C#, Java, Python, JavaScript, TypeScript, SQL, Bash</p></div>
+        <div><h3>Technologies</h3><p>.NET, Spring Boot, Django, Angular, Kubernetes, Docker, NGINX, MongoDB, PostgreSQL, Redis, PyTorch, Pandas</p></div>
+        <div><h3>Education</h3><p>Georgia Tech, BS in Computer Science, May 2027. AI and HCI concentrations.</p></div>
       </div>
     </div>
   </div>
 </section>
 
 <section class="contact" id="contact">
-  <a class="big" href="mailto:you@example.com">you@example.com</a>
+  <p style="color:var(--muted);margin-bottom:16px">Graduating May 2027. Looking for high-agency SWE roles.</p>
+  <a class="big" href="mailto:ashah740@gatech.edu">ashah740@gatech.edu</a>
   <nav aria-label="Links">
-    <a href="https://github.com/yourname">GitHub</a>
-    <a href="https://linkedin.com/in/yourname">LinkedIn</a>
-    <a href="https://instagram.com/yourname">Instagram</a>
-    <a href="resume.pdf">Résumé</a>
+    <a href="https://github.com/arav-pdx">GitHub</a>
+    <a href="https://linkedin.com/in/arav-shah">LinkedIn</a>
+    <a href="Arav_Shah_Resume.pdf">Résumé</a>
   </nav>
 </section>
 </main>
 
-<footer>© 2026 Your Name</footer>
+<footer>© 2026 Arav Shah</footer>
 
 <dialog id="lb" aria-label="Photo viewer"><button aria-label="Close">&times;</button><div role="img"></div></dialog>
 
