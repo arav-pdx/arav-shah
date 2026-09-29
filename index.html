@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Name — Software and Hardware Engineer, Photographer</title>
+<meta name="description" content="Portfolio of Your Name: software projects, engineering projects, and photography.">
+<meta name="theme-color" content="#fcfffe">
+<style>
+:root{--bg:#fcfffe;--text:#000;--muted:#767676;--pad:clamp(20px,4vw,48px)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:"Helvetica Neue",Helvetica,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:2px solid #000;outline-offset:3px}
+.ph{display:block;background:var(--img,none) center/cover,linear-gradient(135deg,var(--g1,#dfe3e2),var(--g2,#b9c2c0))}
+
+/* Header and menu */
+.top{position:fixed;inset:0 0 auto;z-index:20;height:56px;padding:0 var(--pad);display:flex;align-items:center;gap:24px;background:rgba(252,255,254,.9);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.mark{font-weight:500;text-decoration:none;margin-right:auto}
+.top .mail{font-size:14px;color:var(--muted);text-decoration:none}
+.menu-btn{font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+#menu{position:fixed;inset:0;z-index:15;background:var(--bg);padding:96px var(--pad) 40px;overflow:auto}
+#menu[hidden]{display:none}
+#menu>ul{list-style:none;padding:0;columns:2 260px;column-gap:48px}
+#menu>ul>li{break-inside:avoid;margin-bottom:28px;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+#menu ul ul{list-style:none;padding:0;margin-top:8px;text-transform:none;letter-spacing:0;font-size:18px;color:var(--muted)}
+#menu a{text-decoration:none}#menu a:hover{text-decoration:underline}
+
+/* Intro and slideshow */
+.intro{padding:120px var(--pad) 32px}
+.intro h1{font-size:clamp(48px,9vw,120px);font-weight:300;letter-spacing:-.04em;line-height:1}
+.intro p{font-size:clamp(18px,2vw,24px);color:var(--muted);margin-top:16px}
+.show{padding:0 var(--pad)}
+.stage{aspect-ratio:16/9;max-height:78vh;width:100%;cursor:pointer;transition:opacity .25s}
+.stage.out{opacity:0}
+.bar{display:flex;align-items:center;gap:20px;padding:14px 0;font-size:14px}
+.bar #cap{margin-right:auto}
+.bar #count{color:var(--muted);font-variant-numeric:tabular-nums}
+.bar button:hover{text-decoration:underline}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;padding-bottom:16px}
+.thumbs[hidden]{display:none}
+.thumbs button{aspect-ratio:4/3;opacity:.5}
+.thumbs button[aria-current=true]{opacity:1;outline:2px solid #000;outline-offset:2px}
+
+/* Work */
+.block{padding:112px var(--pad) 0;max-width:1400px;margin:0 auto}
+h2{font-size:clamp(28px,4vw,44px);font-weight:300;letter-spacing:-.02em;margin-bottom:32px}
+h3{font-size:20px;font-weight:500}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:56px 24px}
+.cards .wide{grid-column:1/-1}
+.cards .ph{aspect-ratio:4/3;margin-bottom:16px;transition:opacity .2s}
+.cards .wide .ph{aspect-ratio:21/9}
+.cards a.ph:hover{opacity:.9}
+.cards p{max-width:52ch;color:var(--muted);margin-top:4px}
+.cards .meta{font-size:14px}
+.cards .lk{display:flex;gap:20px;margin-top:8px;font-size:15px}
+.cards .lk a{color:var(--text)}
+
+/* Photography */
+.grid{columns:3 280px;column-gap:12px}
+.photo{width:100%;margin:0 0 12px;cursor:zoom-in;break-inside:avoid;transition:opacity .2s}
+.photo:hover{opacity:.9}
+.p{aspect-ratio:4/5}.l{aspect-ratio:3/2}.s{aspect-ratio:1/1}
+dialog{border:0;background:transparent;max-width:none;max-height:none;width:100vw;height:100vh;padding:24px;align-items:center;justify-content:center}
+dialog[open]{display:flex}
+dialog::backdrop{background:rgba(0,0,0,.92)}
+dialog div{width:min(1200px,100%);height:100%;max-height:88vh;background:var(--img,none) center/contain no-repeat,linear-gradient(135deg,var(--g1,#dfe3e2),var(--g2,#b9c2c0))}
+dialog button{position:fixed;top:12px;right:20px;color:#fff;font-size:36px;line-height:1}
+
+/* About and contact */
+.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,6vw,96px);align-items:start}
+.about .ph{aspect-ratio:4/5}
+.said{font-family:Georgia,"Times New Roman",serif;font-size:clamp(24px,3vw,36px);line-height:1.3}
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;font-size:15px}
+.skills h3{font-size:15px}
+.skills p{color:var(--muted);margin-top:4px}
+.contact{padding:128px var(--pad) 40px;text-align:center}
+.contact .big{font-size:clamp(24px,5vw,56px);font-weight:300;letter-spacing:-.02em;text-decoration:none}
+.contact .big:hover{text-decoration:underline}
+.contact nav{display:flex;gap:24px;justify-content:center;margin-top:24px}
+footer{padding:24px var(--pad) 40px;text-align:center;font-size:13px;color:var(--muted)}
+
+@media (max-width:760px){
+  .top .mail{display:none}
+  .cards,.about,.skills{grid-template-columns:1fr}
+  .cards .wide .ph{aspect-ratio:4/3}
+  .block{padding-top:80px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="mark" href="#top">Your Name</a>
+  <a class="mail" href="mailto:you@example.com">you@example.com</a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+</header>
+
+<nav id="menu" aria-label="Site" hidden>
+  <ul>
+    <li><a href="#top">Overview</a></li>
+    <li><a href="#software">Software</a>
+      <ul><li><a href="#p1">Project One</a></li><li><a href="#p2">Project Two</a></li></ul></li>
+    <li><a href="#engineering">Engineering</a>
+      <ul><li><a href="#p3">Project Three</a></li></ul></li>
+    <li><a href="#photography">Photography</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://github.com/yourname">GitHub</a></li>
+    <li><a href="https://linkedin.com/in/yourname">LinkedIn</a></li>
+  </ul>
+</nav>
+
+<main>
+<section class="intro" id="top">
+  <h1>Your Name</h1>
+  <p>Software and hardware engineer. Photographer.</p>
+</section>
+
+<section class="show" aria-label="Featured work">
+  <div class="stage ph" id="stage" role="img" aria-label="Featured work"></div>
+  <div class="bar">
+    <span id="cap" aria-live="polite"></span>
+    <span id="count"></span>
+    <button id="prev" aria-label="Previous">Prev</button>
+    <button id="next" aria-label="Next">Next</button>
+    <button id="tbtn" aria-expanded="false">Show thumbnails</button>
+  </div>
+  <div class="thumbs" id="thumbs" hidden></div>
+</section>
+
+<section class="block" id="software">
+  <h2>Software</h2>
+  <div class="cards">
+    <!-- Images go in /images. Slideshow is built from every element with data-slide. -->
+    <article id="p1">
+      <a class="ph" href="https://github.com/yourname/project-one" aria-label="Project One" data-slide="Project One" data-cat="Software" style="--img:url(images/project-one.jpg);--g1:#c9d6ff;--g2:#e6e6ec"></a>
+      <h3>Project One</h3>
+      <p>One sentence on what it does and who it is for, then one on the result, such as users, speed, or a problem solved.</p>
+      <p class="meta">React, TypeScript, Node.js</p>
+      <p class="lk"><a href="https://github.com/yourname/project-one">Code</a><a href="#">Live demo</a></p>
+    </article>
+    <article id="p2">
+      <a class="ph" href="https://github.com/yourname/project-two" aria-label="Project Two" data-slide="Project Two" data-cat="Software" style="--img:url(images/project-two.jpg);--g1:#ffe0c2;--g2:#f4c4b0"></a>
+      <h3>Project Two</h3>
+      <p>Name the problem and the decision you are proudest of. Recruiters skim, so keep it short.</p>
+      <p class="meta">Python, PostgreSQL, Docker</p>
+      <p class="lk"><a href="https://github.com/yourname/project-two">Code</a><a href="#">Write-up</a></p>
+    </article>
+  </div>
+</section>
+
+<section class="block" id="engineering">
+  <h2>Engineering</h2>
+  <div class="cards">
+    <article class="wide" id="p3">
+      <a class="ph" href="#" aria-label="Project Three" data-slide="Project Three" data-cat="Engineering" style="--img:url(images/project-three.jpg);--g1:#cfe8dc;--g2:#9fb8ad"></a>
+      <h3>Project Three</h3>
+      <p>Show the physical side: what you designed, built, and tested, and how software made it work. Include a measurable result.</p>
+      <p class="meta">CAD, embedded C, PCB design, sensors</p>
+      <p class="lk"><a href="#">Details</a><a href="https://github.com/yourname/project-three">Firmware</a></p>
+    </article>
+  </div>
+</section>
+
+<section class="block" id="photography">
+  <h2>Photography</h2>
+  <div class="grid">
+    <!-- Classes: p portrait, l landscape, s square -->
+    <button class="ph photo p" aria-label="Photo 1" data-slide="Photo title one" data-cat="Photography" style="--img:url(images/photo-1.jpg);--g1:#e6dcd0;--g2:#a99e94"></button>
+    <button class="ph photo l" aria-label="Photo 2" data-slide="Photo title two" data-cat="Photography" style="--img:url(images/photo-2.jpg);--g1:#cbd5dc;--g2:#8b9aa5"></button>
+    <button class="ph photo s" aria-label="Photo 3" data-slide="Photo title three" data-cat="Photography" style="--img:url(images/photo-3.jpg);--g1:#e8d5d0;--g2:#b89a94"></button>
+    <button class="ph photo l" aria-label="Photo 4" style="--img:url(images/photo-4.jpg);--g1:#d4dccb;--g2:#93a08a"></button>
+    <button class="ph photo p" aria-label="Photo 5" style="--img:url(images/photo-5.jpg);--g1:#dcd3e0;--g2:#9d92a5"></button>
+    <button class="ph photo s" aria-label="Photo 6" style="--img:url(images/photo-6.jpg);--g1:#e0dbc8;--g2:#a8a184"></button>
+  </div>
+</section>
+
+<section class="block" id="about">
+  <div class="about">
+    <div class="ph" role="img" aria-label="Portrait of Your Name" style="--img:url(images/portrait.jpg)"></div>
+    <div>
+      <p class="said">I build across software and the physical world, from web apps to circuits and enclosures. I would rather show the work than describe it.</p>
+      <div class="skills">
+        <div><h3>Software</h3><p>TypeScript, Python, SQL, React, Docker</p></div>
+        <div><h3>Engineering</h3><p>CAD, embedded C, PCB design, prototyping</p></div>
+        <div><h3>Photography</h3><p>Lightroom, 35mm film, travel and street</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <a class="big" href="mailto:you@example.com">you@example.com</a>
+  <nav aria-label="Links">
+    <a href="https://github.com/yourname">GitHub</a>
+    <a href="https://linkedin.com/in/yourname">LinkedIn</a>
+    <a href="https://instagram.com/yourname">Instagram</a>
+    <a href="resume.pdf">Résumé</a>
+  </nav>
+</section>
+</main>
+
+<footer>© 2026 Your Name</footer>
+
+<dialog id="lb" aria-label="Photo viewer"><button aria-label="Close">&times;</button><div role="img"></div></dialog>
+
+<script>
+const $=s=>document.querySelector(s),menu=$('#menu'),mb=$('.menu-btn');
+const setMenu=o=>{menu.hidden=!o;mb.setAttribute('aria-expanded',o);mb.textContent=o?'Close':'Menu'};
+mb.onclick=()=>setMenu(menu.hidden);
+menu.onclick=e=>{if(e.target.closest('a'))setMenu(false)};
+
+const items=[...document.querySelectorAll('[data-slide]')].map(e=>({css:e.style.cssText,t:e.dataset.slide,c:e.dataset.cat}));
+const stage=$('#stage'),cap=$('#cap'),count=$('#count'),thumbs=$('#thumbs');let i=0;
+items.forEach((it,n)=>{const b=document.createElement('button');b.className='ph';b.style.cssText=it.css;b.setAttribute('aria-label',it.t);b.onclick=()=>show(n);thumbs.append(b)});
+function show(n){
+  i=(n+items.length)%items.length;stage.classList.add('out');
+  setTimeout(()=>{const it=items[i];stage.style.cssText=it.css;cap.textContent=it.t+', '+it.c;
+    count.textContent=(i+1)+' / '+items.length;
+    [...thumbs.children].forEach((b,k)=>b.setAttribute('aria-current',k===i));stage.classList.remove('out')},200);
+}
+$('#prev').onclick=()=>show(i-1);$('#next').onclick=()=>show(i+1);stage.onclick=()=>show(i+1);
+$('#tbtn').onclick=e=>{thumbs.hidden=!thumbs.hidden;e.target.setAttribute('aria-expanded',!thumbs.hidden);e.target.textContent=thumbs.hidden?'Show thumbnails':'Hide thumbnails'};
+addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false);if(!lb.open&&menu.hidden){if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1)}});
+show(0);
+
+const lb=$('#lb'),lbv=lb.querySelector('div');
+document.querySelectorAll('.photo').forEach(p=>p.onclick=()=>{lbv.style.cssText=p.style.cssText;lbv.setAttribute('aria-label',p.getAttribute('aria-label'));lb.showModal()});
+lb.onclick=()=>lb.close();
+</script>
+</body>
+</html>
